@@ -10,6 +10,7 @@ export const Cart = ({cart}) => {
   }
 
   console.log(cart);
+  //a
 
   const isEmpty = cart.line_items.length === 0;
 
