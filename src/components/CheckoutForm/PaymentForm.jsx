@@ -2,11 +2,37 @@ import React from 'react'
 import { Typography, Button, Divider } from "@material-ui/core";
 import { Elements, CardElement, ElementsConsumer} from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js/pure";
+import {Review} from './Review';
 
-export const PaymentForm = () => {
+const stripePromise = loadStripe('...');
+
+export const PaymentForm = ({ checkoutToken, backstep }) => {
   return (
-    <div>
-      Payment Form
-    </div>
+    <>
+      <Review checkoutToken={checkoutToken}/>
+      <Divider  />
+      <Typography variant="h6" gutterBottom style={{ margin: '20px 0' }}>
+        Payment Method
+      </Typography>
+      <Elements stripe={stripePromise}>
+        <ElementsConsumer>
+          {({ elements, stripe}) => (
+            <form>
+              <CardElement />
+              <br/>
+              <br/>
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <Button variant="outlined" onClick={backstep}>
+                  Back
+                </Button>
+                <Button type="submit" variant="contained" disabled={!stripe} color="primary">
+                  Pay { checkoutToken.live.subtotal.formatted_with_symbol }
+                </Button>
+              </div>
+            </form>
+          )}
+        </ElementsConsumer>
+      </Elements>
+    </>
   )
 }
