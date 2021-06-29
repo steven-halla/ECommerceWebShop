@@ -1,11 +1,11 @@
 import React from 'react';
-import { Typography, Button, Card, CardActions, CardContent, CardMedia } from "@material-ui/core";
+import {Button, Card, CardActions, CardContent, CardMedia, Typography} from "@material-ui/core";
 import useStyles from './styles';
 
 //prop drilling is a thing need to fix later
-const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart  }) => {
+const CartItem = ({item, onUpdateCartQty, onRemoveFromCart}) => {
   const classes = useStyles();
-  
+
   return (
     <Card>
       <CardMedia image={item.media.source} alt={item.name} className={classes.media}/>
@@ -19,13 +19,13 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart  }) => {
       </CardContent>
       <CardActions className={classes.cardActions}>
         <div className={classes.buttons}>
-          <Button className={classes.button} size="small" onClick={() => onUpdateCartQty(item.id, item.quantity - 1 )} >
+          <Button className={classes.button} size="small" onClick={() => onUpdateCartQty(item.id, item.quantity - 1)}>
             -
           </Button>
           <Typography>
             {item.quantity}
           </Typography>
-          <Button className={classes.button} size="small" onClick={() => onUpdateCartQty(item.id, item.quantity + 1 )}>
+          <Button className={classes.button} size="small" onClick={() => onUpdateCartQty(item.id, item.quantity + 1)}>
             +
           </Button>
         </div>
@@ -37,4 +37,4 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart  }) => {
   )
 }
 
-export default  CartItem
+export default CartItem

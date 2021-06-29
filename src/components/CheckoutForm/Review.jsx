@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography, List, ListItem, ListItemText} from "@material-ui/core";
+import {List, ListItem, ListItemText, Typography} from "@material-ui/core";
 
-export const Review = ({ checkoutToken }) => {
+export const Review = ({checkoutToken}) => {
   return (
     <>
       <Typography variant="h6" gutterBottom> Order Summary </Typography>
