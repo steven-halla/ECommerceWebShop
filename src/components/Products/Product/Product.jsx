@@ -17,6 +17,9 @@ const CardWrapper = ({product, onAddToCart, onClick}) => {
           <Typography variant="h5">
             {product.price.formatted_with_symbol}
           </Typography>
+          {/*<Typography variant="h5">*/}
+          {/*  {product.totalPrice}*/}
+          {/*</Typography>*/}
         </div>
         <Typography dangerouslySetInnerHTML={{__html: product.description}} color="textSecondary"/>
       </CardContent>

@@ -10,11 +10,9 @@ export const Cart = ({cart, handleUpdateCartQty, handleRemoveFromCart, handleEmp
   if (!cart) {
     return <>Loading Cart</>;
   }
-
   console.log(cart);
 
   const isEmpty = cart.line_items.length === 0;
-
 
   const EmptyCart = () => (
     <Typography variant="subtitle1">

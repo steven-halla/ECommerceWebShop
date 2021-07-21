@@ -16,7 +16,7 @@ export const Navbar = ({totalItems}) => {
         <Toolbar>
           <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
             <img src={logo} alt="Commerce.js" height="25px" className={classes.image}/>
-            Commerce.js
+            Hobby Max
           </Typography>
           <div className={classes.grow}/>
           {location.pathname === '/' && (

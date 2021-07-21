@@ -18,7 +18,6 @@ export const PaymentForm = ({checkoutToken, shippingData, onCaptureCheckout, bac
 
     if (error) {
       console.log(error);
-
     } else {
       const orderData = {
         line_items: checkoutToken.live.line_items,

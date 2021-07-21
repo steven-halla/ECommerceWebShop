@@ -22,10 +22,8 @@ export const AddressForm = ({checkoutToken, next}) => {
     label: `${sO.description} - (${sO.price.formatted_with_symbol})`
   }));
 
-
   const fetchShippingCountries = async (checkoutTokenId) => {
     const {countries} = await commerce.services.localeListShippingCountries(checkoutTokenId);
-    console.log(countries);
     setShippingCountries(countries);
     setShippingCountry(Object.keys(countries)[0]);
   }
@@ -39,7 +37,6 @@ export const AddressForm = ({checkoutToken, next}) => {
 
   const fetchShippingOptions = async (checkoutTokenId, country, region = null) => {
     const options = await commerce.checkout.getShippingOptions(checkoutTokenId, {country, region});
-
     setShippingOptions(options);
     setShippingOption(options[0].id);
   }
@@ -53,9 +50,10 @@ export const AddressForm = ({checkoutToken, next}) => {
   }, [shippingCountry]);
 
   useEffect(() => {
-    if (shippingSubdivisions) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision);
-  }, [shippingSubdivisions]);
-
+    if (shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision);
+  }, [shippingSubdivision]);
+  console.log(shippingOption);
+  console.log(options);
   return (
     <>
       <Typography variant="h6" gutterBottom>
@@ -83,7 +81,6 @@ export const AddressForm = ({checkoutToken, next}) => {
                     {country.label}
                   </MenuItem>
                 ))}
-
               </Select>
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -99,12 +96,9 @@ export const AddressForm = ({checkoutToken, next}) => {
             <Grid item xs={12} sm={6}>
               <InputLabel>Shipping Options</InputLabel>
               <Select value={shippingOption} fullWidth onChange={(e) => setShippingOption(e.target.value)}>
-                {shippingOptions.map((sO) => ({
-                  id: sO.id,
-                  label: `${sO.description} - (${sO.price.formatted_with_symbol})`
-                })).map((item) => (
-                  <MenuItem key={item.id} value={item.id}>
-                    {item.label}
+                {options.map((option) => (
+                  <MenuItem key={option.id} value={option.id}>
+                    {option.label}
                   </MenuItem>
                 ))}
               </Select>
@@ -115,7 +109,6 @@ export const AddressForm = ({checkoutToken, next}) => {
             <Button component={Link} to="/cart" variant="outlined">
               Back to cart
             </Button>
-
             <Button type="submit" variant="contained" color="primary">
               Next
             </Button>

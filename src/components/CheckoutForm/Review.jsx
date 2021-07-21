@@ -2,14 +2,22 @@ import React from 'react';
 import {List, ListItem, ListItemText, Typography} from "@material-ui/core";
 
 export const Review = ({checkoutToken}) => {
+  // const totalShippingCost = checkoutToken.line_items.reduce((product) => {
+  //   return product.quantity;
+  // }) * shipping;
+
+  // const totalPrice = `${price} ${shippingOption}`;
+
   return (
-    <>
-      <Typography variant="h6" gutterBottom> Order Summary </Typography>
+  <>
+    <Typography variant="h6" gutterBottom> Order Summary </Typography>
       <List disablePadding>
         {checkoutToken.live.line_items.map((product) => (
           <ListItem style={{padding: '10px 0'}} key={product.name}>
-            <ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`}/>
+            <ListItemText primary={product.name}  secondary={`Quantity: ${product.quantity}`}/>
             <Typography variant="body2">{product.line_total.formatted_with_symbol}</Typography>
+            {/*<Typography variant="body2"> {totalShippingCost}</Typography>*/}
+
           </ListItem>
         ))}
         <ListItem style={{padding: '10px 0 '}}>

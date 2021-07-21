@@ -32,7 +32,7 @@ export const Checkout = ({cart, order, onCaptureCheckout, error}) => {
         const token = await commerce.checkout.generateToken(cart.id, {type: 'cart'});
         setCheckoutToken(token);
       } catch (error) {
-        history.pushState('/');
+        history.push('/');
       }
     }
 
@@ -69,7 +69,6 @@ export const Checkout = ({cart, order, onCaptureCheckout, error}) => {
       <Button component={Link} to="/" variant="outlined" type="button">
         Back to Home
       </Button>
-
     </>
   ) : isFinished ? (
     <>
@@ -78,13 +77,11 @@ export const Checkout = ({cart, order, onCaptureCheckout, error}) => {
           Thank you for your purchase
         </Typography>
         <Divider className={classes.divider}/>
-
       </div>
       <br/>
       <Button component={Link} to="/" variant="outlined" type="button">
         Back to Home
       </Button>
-
     </>
   ) : (
     <div className={classes.spinner}>
@@ -101,7 +98,6 @@ export const Checkout = ({cart, order, onCaptureCheckout, error}) => {
       </Button>
     </>
   }
-
 
   const Form = () => activeStep === 0
     ? <AddressForm checkoutToken={checkoutToken} next={next}/>

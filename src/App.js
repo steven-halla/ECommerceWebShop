@@ -65,7 +65,6 @@ const App = () => {
     }
   }
 
-
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -113,7 +112,6 @@ const App = () => {
         </Switch>
       </div>
     </Router>
-
   )
 }
 
